@@ -69,6 +69,10 @@ def specForImage(image, version){
             image: "openshift/jenkins-agent-maven-35-centos7",
             shell: '/bin/bash'
       ],
+      "1.8.1": [
+            image: "openshift/jenkins-slave-maven-centos7:v4.0",
+            shell: '/bin/bash'
+      ],
     ],
   ]
 
