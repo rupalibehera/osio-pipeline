@@ -7,7 +7,7 @@ def call(Map args) {
       error "Missing manadatory parameter: resources"
     }
     echo "**************"
-    echo args.resources
+    echo "args.resouces: $args.resources"
     // can pass single or multiple maps
     echo "-----------------"
     def res = Utils.mergeResources(args.resources)
