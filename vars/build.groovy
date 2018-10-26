@@ -67,6 +67,6 @@ def createImageStream(imageStreams, namespace) {
 def buildProject(buildConfigs, namespace) {
     buildConfigs.each { buildConfig ->
         Utils.ocApply(this, buildConfig, namespace)
-        openshiftBuild(buildConfig: "${buildConfig.metadata.name}", showBuildLogs: 'true', verbose: 'true')
+        openshiftBuild(buildConfig: "${buildConfig.metadata.name}", showBuildLogs: 'true')
     }
 }
