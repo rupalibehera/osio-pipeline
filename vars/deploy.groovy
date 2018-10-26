@@ -86,7 +86,7 @@ def applyResources(ns, res) {
 
 def verifyDeployments(ns, dcs) {
   dcs.each { dc ->
-    openshiftVerifyDeployment(depCfg: "${dc.metadata.name}", namespace: "${ns}", verbose: true)
+    openshiftVerifyDeployment(depCfg: "${dc.metadata.name}", namespace: "${ns}")
   }
 }
 
