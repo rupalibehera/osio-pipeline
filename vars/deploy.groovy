@@ -38,6 +38,8 @@ def call(Map args = [:]) {
   }
 
   stage("Deploy to ${args.env}") {
+    echo "-----deploy-----"
+    echo "image:$image"
     spawn(image: image) {
       def userNS = Utils.usersNamespace();
       def deployNS = userNS + "-" + args.env;
