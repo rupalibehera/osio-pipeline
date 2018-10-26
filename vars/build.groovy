@@ -28,6 +28,7 @@ def call(Map args) {
     if (!image) {
       image = args.commands ? config.runtime() : 'oc'
     }
+    echo "image: $image"
     def gitURL = Utils.shWithOutput(this, "git config remote.origin.url")
     def commitHash = Utils.shWithOutput(this, "git rev-parse --short HEAD")
     def status = ""
