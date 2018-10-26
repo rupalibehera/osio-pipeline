@@ -6,11 +6,12 @@ def call(Map args) {
     if (!args.resources) {
       error "Missing manadatory parameter: resources"
     }
-
-
+    echo "**************"
+    echo args.resources
     // can pass single or multiple maps
+    echo "-----------------"
     def res = Utils.mergeResources(args.resources)
-
+    echo "res: $res"
     def required = ['ImageStream', 'BuildConfig']
     def found = res.keySet()
     def missing = required - found
@@ -19,7 +20,11 @@ def call(Map args) {
     }
 
     def namespace = args.namespace ?: Utils.usersNamespace()
+    echo "**************"
+    echo "namespace: $namespace"
+    echo "-----------------"
     def image = args.image
+    echo "image: $image"
     if (!image) {
       image = args.commands ? config.runtime() : 'oc'
     }
