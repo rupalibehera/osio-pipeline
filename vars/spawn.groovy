@@ -34,6 +34,8 @@ def execute(commands, body) {
 }
 
 def specForImage(image, version){
+  echo "inside specForImage"
+  echo "image:$image, version:$version"
   // TODO use proper images
   def specs = [
     "node": [
