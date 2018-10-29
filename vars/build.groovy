@@ -26,6 +26,8 @@ def call(Map args) {
     def image = args.image
     echo "image: $image"
     if (!image) {
+      echo "args.commands: $args.commands"
+      echo "config.runtime: $config.runtime()"
       image = args.commands ? config.runtime() : 'oc'
     }
     echo "image: $image"
