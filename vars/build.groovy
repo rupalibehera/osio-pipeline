@@ -29,7 +29,7 @@ def call(Map args) {
       echo "args.commands: $args.commands"
       runtime=config.runtime()
       echo "config.runtime: $runtime"
-      image = args.commands ? config.runtime() : 'oc'
+      image = args.commands ? config.runtime() : 'java'
     }
     echo "image: $image"
     def gitURL = Utils.shWithOutput(this, "git config remote.origin.url")
@@ -40,6 +40,7 @@ def call(Map args) {
       try {
         createImageStream(res.ImageStream, namespace)
         buildProject(res.BuildConfig, namespace)
+        Utils.shWithOutput(this, "mvn clean verify -Dnamespace.use.existing=${namespace} -Popenshift,openshift-it")
         status = "pass"
       } catch (e) {
         status = "fail"

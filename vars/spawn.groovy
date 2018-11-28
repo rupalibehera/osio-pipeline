@@ -9,7 +9,7 @@ def call(Map args = [:], body = null){
     def checkoutScm = args.checkout_scm ?: true
 
     // oc is available on master so don't spawn unnecessarily
-    if (args.image == "oc") {
+    if (args.image == "java") {
       execute(args.commands, body)
       return
     }
@@ -64,6 +64,7 @@ def specForImage(image, version){
     ],
     "java": [
       "latest": [
+
             image: "openshift/jenkins-agent-maven-35-centos7",
             shell: '/bin/bash'
       ],
@@ -71,11 +72,7 @@ def specForImage(image, version){
             image: "openshift/jenkins-agent-maven-35-centos7",
             shell: '/bin/bash'
       ],
-      "1.8.1": [
-            image: "openshift/jenkins-slave-maven-centos7:v4.0",
-            shell: '/bin/bash'
-      ],
-    ],
+
   ]
 
   // TODO: validate image in specs
