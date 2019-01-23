@@ -8,6 +8,9 @@ def call(Map args = [:], body = null){
     }
 
     def spec = specForImage(args.image, args.version?: 'latest')
+    print "************"
+    print spec
+    print "*************"
 
     // read and merge environment variable passed via spwan api and spec
     def envVars = mergeEnvs(args, spec)
@@ -42,8 +45,10 @@ def execute(commands, body) {
 def mergeEnvs(args, spec){
     // read if any environment variable is passed via Jenkinsfile calling spawn api directly
     def apiEnvVars = args.envVar ?: []
+    echo "apiEnvVars:${apiEnvVars}"
     // read environment variable from spec
     def specEnvVars = spec.envVar ?: []
+    echo "specEnvVars:${specEnvVars}"
     return Utils.mergeResources(apiEnvVars + specEnvVars)
 }
 
