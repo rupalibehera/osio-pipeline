@@ -8,9 +8,12 @@ def call(Map args = [:], body = null){
     }
 
     def spec = specForImage(args.image, args.version?: 'latest')
+    print "------------"
+    print args
     print "************"
     print spec
     print "*************"
+
 
     // read and merge environment variable passed via spwan api and spec
     def envVars = mergeEnvs(args, spec)
